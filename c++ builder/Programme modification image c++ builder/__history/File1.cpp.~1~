@@ -1,0 +1,100 @@
+#pragma hdrstop
+#pragma argsused
+
+#ifdef _WIN32
+#include <tchar.h>
+#include <iostream>
+#include <fstream>
+#include "Unit1.h"
+#include "Windows.h"
+#else
+  typedef char _TCHAR;
+  #define _tmain main
+#endif
+
+#include <stdio.h>
+ using namespace std;
+ int _tmain(int argc, _TCHAR* argv[])
+
+{
+SNImage image;
+
+	image.Chargement("Desert.bmp");
+	image.Chargement("Desert.bmp");
+	cout<<"Largeur: ";
+	cout<<image.Largeur()<<endl;
+	cout<<"Hauteur: " ;
+	cout<<image.Hauteur()<<endl;
+	image.Sauvegarde("image1.bmp");
+
+	image.RetourneVertical();
+	image.Sauvegarde("image2.bmp");
+	cout<<"Sauvegarde check"<<endl;;
+
+	image.RetourneHorizontal();
+	image.Sauvegarde("image3.bmp");
+	cout<<"retour horizontal check: " ;
+
+	image.Negatif();
+	image.Sauvegarde("image4.bmp");
+	cin.get();
+
+	cout<<"choisir le seuil : ";
+	int niveau;
+	cin>>niveau;
+	image.SeuilleNoirBlanc(niveau);
+	image.Sauvegarde("image5.bmp");
+	cout<<"seuillage fait"<<endl ;
+	cin.get();
+
+	image.Tourne90Droite();
+	image.Sauvegarde("image6.bmp");
+	cout<<"Rotation a 90° a droite"<<endl ;
+	cin.get();
+
+	image.Tourne90Gauche();
+	image.Sauvegarde("image7.bmp");
+	cout<<"Rotation a 90° a gauche"<<endl ;
+	cin.get();
+
+	image.Tourne180();
+	image.Sauvegarde("image8.bmp");
+	cout<<"Rotation a 180°"<<endl ;
+	cin.get();
+
+
+	cout<<"colorie : "<<endl;
+
+	int x, y, l, h, blue, red, green;
+
+	cout<<"point de départ ligne : ";
+	cin>>x;
+	cout<<"point de départ colonne : ";
+	cin>>y;
+	cout<<"Distance horizontal : ";
+	cin>>l;
+	cout<<"Distance vertical : ";
+	cin>>h;
+
+	cout<<"code Couleur bleu: ";
+	cin>>blue;
+
+	cout<<"code Couleur vert: ";
+	cin>>green;
+
+	cout<<"code Couleur rouge: ";
+	cin>>red;
+
+	Coordonnee coord={x,y};
+	Pixel couleur={blue,green,red};
+	image.Colorie( coord,h,l,couleur);
+	image.Sauvegarde("image9.bmp");
+	cout<<"changement de couleur"<<endl ;
+	cin.get();
+
+
+
+
+
+
+}

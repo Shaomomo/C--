@@ -1,0 +1,141 @@
+#include <stdio.h>
+#include <iostream>
+#include "serveurLORA.h"
+#include <string>
+#include <pthread.h>
+#include <thread>
+#include "serveurTCP.h"
+#include "serveurHTTP.h"
+#include <unistd.h>
+#include "VSCOM.h"
+
+using namespace std ;
+
+// Définition des ports
+	string nomDuPort_LORA, nomDuPort_VSCOM = "/dev/ttyUSB1"; int numDuPort_TCP = 9999, numDuPort_HTTP = 8080;
+// Déclaration des objets
+	SERVEURLORA LORA ; SERVEURTCP TCP ; SERVEURTCP TCP_HTTP ; SERVEURHTTP HTTP; CREATIONHTML HTML; VSCOM VSCOM;
+	DonneeCAN extractCAN;
+	MessageCANetendu Mcan;
+// Déclaration des variables globale
+	string messageRecu, messageArretServeur; 
+	int nbOct = 0;
+	char messageDuClient[1000]; char sendMessage[23] = "Reception serveur : OK"; 
+	string str_Reception_VSCOM;
+
+
+void * thread_EcouteLora( void * pData ){ 
+	while (1) {
+		messageRecu = LORA.lireMessage();
+		if ( messageRecu.length() > 2 )
+			cout << "Serveur Lora. Taille : " << messageRecu.length() << " - Message : "<< messageRecu << endl ;
+	}
+}
+
+void * thread_EcouteVSCOM( void * pData ){ 
+	while (1) {
+		str_Reception_VSCOM = VSCOM.ReceptionTrame();
+		if(str_Reception_VSCOM != ""){
+			cout << "Trame recue : " << str_Reception_VSCOM << endl;
+			extractCAN = Mcan.ExtraitDonneeTrameVSCOM(str_Reception_VSCOM);
+			if(extractCAN.identifiant == 8193)
+				cout << "C'est un defaut" << endl;
+
+			cout << extractCAN.identifiant << endl;
+				// cout << extractCAN.requete << endl;
+				// cout << extractCAN.longueur << endl;
+		}
+	}
+}
+
+void * thread_ServeurTCP (void * pDataBis ){ 
+	while(1){
+		TCP.attendreUnNouveauClient();
+		nbOct = TCP.recevoirUnMessage(messageDuClient,1000);
+		string str(messageDuClient, nbOct); messageArretServeur = str;
+		cout << "Serveur TCP : " << str << "." << endl; 
+		TCP.envoyerUnMessage(sendMessage, 23);
+		TCP.fermerLaCommunicationAvecLeClient();
+	}
+}
+
+void * thread_ServeurWeb (void * pDataBis ){ 
+	while(1){
+		TCP_HTTP.attendreUnNouveauClient();
+        char messageDuClient[1000]; int nbOct = TCP_HTTP.recevoirUnMessage(messageDuClient, 1000);string str(messageDuClient, nbOct);
+        
+        if(HTML.VerrifMessage(messageDuClient)) HTML.CreateRueFile();
+		HTTP.ChargeDernierMessage(str);
+		string dernierMessage = HTTP.DernierMessage();
+        if(HTTP.AnalyseGET()){
+            string nomRessourceDemandee=HTTP.NomRessourceDemandee(); string extensionDemandee=HTTP.ExtensionDemandee();
+            char *buffer=HTTP.BufferRessourceDemandee(); int tailleRessource = HTTP.TailleRessourceDemandee();
+            TCP_HTTP.envoyerUnMessage(buffer,tailleRessource);
+
+            if(extensionDemandee=="jpg"||extensionDemandee=="txt"||extensionDemandee=="html"||extensionDemandee=="css"||extensionDemandee=="js"){
+                cout<<"Ressource : "<<nomRessourceDemandee<<endl;
+                cout<<"Extension : "<<extensionDemandee<<endl;
+                cout<<"Taille : "<<tailleRessource<<endl;
+            } else cout<<"Erreur : "<<buffer<<endl;
+        }else cout<<"Ce n'est pas une requete HTTP"<<endl;
+        TCP_HTTP.fermerLaCommunicationAvecLeClient();
+	}
+}
+
+int main () {
+	cout << "Bienvenue sur le projet : Eclairage-Groupe-Quartier" << endl;
+	cout << "Veuillez renseigner les ports des differents serveurs..." << endl;
+	
+	int  compteur_Lora = 0;
+	do {
+		if(compteur_Lora > 0)
+			cout << "PORT LORA : ECHEC" << endl;
+		cout << "Port du serveur Lora : " ;
+		cin >> nomDuPort_LORA;
+		cout << endl << "Initilisation du port ..." << endl;
+		if(LORA.ouvrir(nomDuPort_LORA) == 0)
+			break;
+		compteur_Lora++;
+	} while (1);
+	cout << "PORT LORA : OK "<<endl;
+
+	pthread_t thread_lora ;
+	pthread_t thread_vscom ;
+	pthread_t thread_tcp ;
+	pthread_t thread_tcp_http ;
+
+// Lancement serveur Lora
+	cout << "Bienvenue sur le projet : Eclairage-Groupe-Quartier" << endl;
+        cout << "Veuillez renseigner les ports des differents serveurs..." << endl;	string trame_envoyer = "Connexion : OK"; trame_envoyer + "\r\n" ;
+        	if ( LORA.envoyerTrame(trame_envoyer) == true ) cout << "Envoi message Lora : OK " << endl ;
+        int compteur_Lora = 0; else cout << "Envoi message Lora : ECHEC" << endl ;
+        do {	pthread_create(&thread_lora,NULL,thread_EcouteLora,NULL); // Lancement serveur TCP
+                if(compteur_Lora > 0)	TCP.mettreEnEcouteSurLePort(numDuPort_TCP);
+                        cout << "PORT LORA : ECHEC" << endl;	pthread_create(&thread_tcp,NULL,thread_ServeurTCP,NULL); // Lancement du serveur WEB
+                cout << "Port du serveur Lora : " ;	TCP_HTTP.mettreEnEcouteSurLePort(numDuPort_HTTP);
+                cin >> nomDuPort_LORA;	HTTP.ModifieTailleMAXRessource(500000); HTTP.ModifieNomVariableJS("envoiValeur");
+                cout << endl << "Initilisation du port ..." << endl;	pthread_create(&thread_tcp_http,NULL,thread_ServeurWeb,NULL); // Lancement VSCOM
+                if(LORA.ouvrir(nomDuPort_LORA) == 0)	VSCOM.ModifierCOM(nomDuPort_VSCOM);
+                        break;	if(!VSCOM.OuvrirCOM()){ cout << "Echec de l'ouverture du port série" << endl; return -1;}
+                compteur_Lora++;	usleep(10000);
+        } while (1);	cout << "Connexion : " << VSCOM.ConnexionVSCOM() << endl;
+        cout << "PORT LORA : OK "<<endl;	pthread_create(&thread_vscom,NULL,thread_EcouteVSCOM,NULL);
+	VSCOM.EnvoiTrameCAN("T0000080072A090218011101");
+
+	messageRecu = "" ;
+
+	while (1){
+		if ( messageArretServeur == "stop" ) {
+			pthread_cancel(thread_tcp);
+			pthread_cancel(thread_lora);
+			pthread_cancel(thread_tcp_http);
+			TCP.arreterLeServeur();
+			TCP_HTTP.arreterLeServeur();
+			LORA.fermer();
+			VSCOM.FermerCOM();
+			return 0;
+		}
+	}
+}
+
+        

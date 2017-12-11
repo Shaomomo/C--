@@ -1,0 +1,10 @@
+
+;17/05/2017;11:10'55;Défaut IGBT;
+;17/05/2017;11:10'55;Défaut fusion fusible;
+;17/05/2017;11:10'55;Alarme alimentation interne 5V;
+;17/05/2017;11:10'55;Alarme tension entrée 230V;
+;17/05/2017;11:10'55;Alarme température radiateur;
+;17/05/2017;11:10'55;Alarme température air ambiant;
+;17/05/2017;11:10'55;Alarme Sonde température débranchée;
+;17/05/2017;11:10'55;Alarme température transformateur (surcharge);
+;17/05/2017;11:10'55;Pas d'alarme horloge;

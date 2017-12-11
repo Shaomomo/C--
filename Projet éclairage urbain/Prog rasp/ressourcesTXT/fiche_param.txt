@@ -1,0 +1,5 @@
+;etat_internet;OK;
+;etat_lora;OK;
+;nom_quartier;Quartier 1;
+;nom_Ville;Nogent-sur-Marne;
+;mode_variateur;Monocycle;

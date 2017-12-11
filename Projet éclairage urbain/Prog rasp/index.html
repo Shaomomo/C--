@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Index -</title>
+		<meta charset='UTF-8'>
+		<script type="text/javascript">
+			function lectureFichier(nomFichier){
+				/* PARTIE JS DE LECTURE DU FICHIER */
+					var REQ_LECT_FILE = new XMLHttpRequest(); // Création de la variable
+					REQ_LECT_FILE.open('GET', 'ressourcesTXT/'+nomFichier+'.txt', false); // On choisit le fichier à lire
+					REQ_LECT_FILE.send(null); // On envoit
+					if(REQ_LECT_FILE.status == 0) // Si réponse vraie
+				  		dump(REQ_LECT_FILE.responseText); // On récupère le contenu
+					var REPONSE_REQUETE = REQ_LECT_FILE.responseText; // On insère le contenu dans une variable
+				/* LE FICHIER EST LU ET STOCKER */
+				return REPONSE_REQUETE;
+			}
+		</script>
+	</head>
+	<body style="background: #F1F1F1; font-family: Arial;">
+<!-- BOUTONS D'INFORMATIONS SUR L'ETAT DE LA RASPBERRY -->
+		<div id="div_etatInternet" style="font-size: 15px;background: #5bc0de; color:#FFF;padding: 7.5px;border-radius: 4px;border: 1px solid #46b8da;display: block;width: 95px;text-align: center;text-decoration: none;position: fixed;left: 15px;top: 15px;">
+			Etat Internet :
+		</div>
+		<div id="div_etatLora" style="font-size: 15px;background: #5bc0de; color:#FFF;padding: 7.5px;border-radius: 4px;border: 1px solid #46b8da;display: block;width: 95px;text-align: center;text-decoration: none;position: fixed;left: 15px;top: 100px;">
+			Etat Lora :
+		</div>
+<!-- BOUTONS D'INFORMATIONS SUR L'ETAT DE LA RASPBERRY -->
+<!-- BLOC CENTRE -->
+		<div id="div_centralBloc" style="width: 600px; margin: auto; background: #FFF; border-radius: 5px; -moz-box-shadow: 2px 2px 12px 1px #656565; -webkit-box-shadow: 2px 2px 12px 1px #656565; -o-box-shadow: 2px 2px 12px 1px #656565; box-shadow: 2px 2px 12px 1px #656565; filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=NaN, Strength=15); margin-top: 50px;; overflow: hidden; border: 1px solid #3498db;">
+			<div id="div_centralBloc_titre" style="padding: 15px; border-bottom: 1px solid #3498db;">
+				<!-- L'ajout de titre est géré par le javascript -->
+			</div>
+			<div id="div_centralBloc_image"> 
+				<!-- La description concerne l'image du quartier, géré par le css -->
+			</div>
+			<div id="div_centralBloc_infos" style="padding: 15px; border-bottom: 1px solid #3498db; font-size: 13px; font-weight: bold;">
+				<div id="id_ville">Ville du quartier : </div>
+				<div id="id_modeFonctionnement">Mode de fonctionnement : </div>
+			</div>
+			<div id="div_centralBloc_gps" style="padding: 15px; border-bottom: 1px solid #3498db; font-size: 13px; font-weight: bold;">
+				Voici les informations de positions GPS affectées à ce quartier<br>
+				<div id="id_longitude" style="margin-top: 5px;"></div>
+				<div id="id_latitude" style="margin-top: 5px;"></div>
+			</div>
+			<div id="div_centralBloc_defauts" style="padding: 15px; border-bottom: 1px solid #3498db; font-size: 13px; font-weight: bold;">
+				Rechercher les trames d'alertes<br>
+				<div id="id_select_defauts" style="margin-top: 5px;"></div>
+				<div id="id_affiche_defauts" style="transition: 0.4s;"></div>
+			</div>
+			<div id="div_centralBloc_consommation" style="padding: 15px; border-bottom: 1px solid #3498db; font-size: 13px; font-weight: bold;">
+				Rechercher une mesure<br>
+				<div id="id_select_consommation" style="margin-top: 5px;"></div>
+				<div id="id_affiche_consommation" style="transition: 0.4s;"></div>
+			</div>
+			<div id="div_centralBloc_interventions" style="padding: 15px; font-size: 13px; font-weight: bold;">
+				Rechercher une intervention<br>
+				<div id="id_select_interventions" style="margin-top: 5px;"></div>
+				<div id="id_affiche_interventions" style="transition: 0.4s;"></div>
+			</div>
+		</div>
+<!-- BLOC CENTRE -->
+<script type="text/javascript">
+// Variables globales
+var new_tab_interventions = new Array();
+(function(){
+/* TRAITEMENT IMAGE */
+	document.getElementById('div_centralBloc_image').innerHTML='<img src="ressourcesTXT/IMG/imgQuartier.PNG" style="width: 600px; height: 300px; border-bottom: 1px solid #3498db;"/>';
+/* TRAITEMENT IMAGE */
+
+/* TRAITEMENT DU FICHIER PARAM */
+	var liste_param = lectureFichier('fiche_param');
+	var tab_temp_param = liste_param.split('\n');
+		var cursor1, cursor2, totalCaract, tabParam = new Array();
+
+		for(var i=0;i<tab_temp_param.length;i++){
+			cursor1 = 0; cursor2 = 0; totalCaract = 0;
+			for(var j=0; j < 2; j++){
+				cursor1 = tab_temp_param[i].indexOf(";", cursor2); 
+				cursor2 = tab_temp_param[i].indexOf(";", cursor1+1);
+				totalCaract = cursor2 - cursor1;
+				tabParam.push(tab_temp_param[i].substr(cursor1+1, totalCaract-1));
+			}
+		}
+		for(var i=0; i<tabParam.length;i++){
+			if(tabParam[i]=="etat_internet")
+				document.getElementById('div_etatInternet').innerHTML+=tabParam[i+1];
+			if(tabParam[i]=="etat_lora")
+				document.getElementById('div_etatLora').innerHTML+=tabParam[i+1];
+			if(tabParam[i]=="mode_variateur")
+				document.getElementById('id_modeFonctionnement').innerHTML+=tabParam[i+1];
+			if(tabParam[i]=="nom_Ville")
+				document.getElementById('id_ville').innerHTML+=tabParam[i+1];
+			if(tabParam[i]=="nom_quartier") {
+				document.getElementById('div_centralBloc_titre').innerHTML="Bienvenue sur la page de données du <strong>"+tabParam[i+1]+"</strong>";
+				window.document.title+= " "+tabParam[i+1];
+			}
+		}
+/* TRAITEMENT DU FICHIER PARAM */
+
+/* TRAITEMENT DU FICHIER GPS */
+	var liste_gps = lectureFichier('fiche_gps');
+	var tab_temp_gps = liste_gps.split('\n');
+		var cursor1, cursor2, totalCaract, tabgps = new Array();
+
+		for(var i=0;i<tab_temp_gps.length;i++){
+			cursor1 = 0; cursor2 = 0; totalCaract = 0;
+			for(var j=0; j < 2; j++){
+				cursor1 = tab_temp_gps[i].indexOf(";", cursor2); 
+				cursor2 = tab_temp_gps[i].indexOf(";", cursor1+1);
+				totalCaract = cursor2 - cursor1;
+				tabgps.push(tab_temp_gps[i].substr(cursor1+1, totalCaract-1));
+			}
+		}
+		for(var i=0; i<tabgps.length;i++){
+			if(tabgps[i]=="pos_long")
+				document.getElementById('id_longitude').innerHTML+= "Longitude : "+tabgps[i+1];
+			if(tabgps[i]=="pos_lat")
+				document.getElementById('id_latitude').innerHTML+= "Latitude : "+tabgps[i+1];
+		}
+/* TRAITEMENT DU FICHIER GPS */
+
+/* TRAITEMENT DU FICHIER INTERVENTION */
+	var liste_interventions = lectureFichier("fiche_intervention_bilan");
+	var nb_interventions = liste_interventions.split('\n');
+
+	var temp_string_interventionsTableau;
+	for(var i=0; i<nb_interventions.length;i++){
+		if(nb_interventions[i]==nb_interventions[0]){
+			temp_string_interventionsTableau = nb_interventions[i];
+			temp_string_interventionsTableau += nb_interventions[i+1];
+			temp_string_interventionsTableau += nb_interventions[i+2];
+			temp_string_interventionsTableau += nb_interventions[i+3];
+			temp_string_interventionsTableau += nb_interventions[i+4];
+			temp_string_interventionsTableau += nb_interventions[i+5];
+			new_tab_interventions.push(temp_string_interventionsTableau);
+		}
+	}
+	// Recherche des dates
+	var temp_date_interventions = new Array(), laDate_interventions;
+	var temp_true_interventions = false; temp_string_interventionsDate="";
+	for(var i=0;i<new_tab_interventions.length;i++){
+		laDate_interventions = new_tab_interventions[i].substr(13,10);
+		temp_true_interventions = true;
+		for(var j=0;j<temp_date_interventions.length;j++){
+			if(laDate_interventions==temp_date_interventions[j]) temp_true_interventions = false;
+		}
+		if(temp_true_interventions){
+			temp_date_interventions.push(laDate_interventions);
+			temp_string_interventionsDate+="<option value="+laDate_interventions+">"+laDate_interventions+"</option>";
+		}
+	}
+	var id_select_interventions = document.getElementById('id_select_interventions');
+	id_select_interventions.innerHTML = "<select id='select_interventions' onChange='evenementChange(\"id_select_interventions\");' style='padding:5px; height: 30px;font-size: 16px;'><option value='none'>Choisir une date</option><optgroup label='Date trouvée'>"+temp_string_interventionsDate+"</optgroup></select>";
+/* TRAITEMENT DU FICHIER INTERVENTION */
+
+
+/* TRAITEMENT DU SELECT DEFAUTS */ 
+	var liste_dateDefauts = lectureFichier("fiche_defauts");
+	var nb_ligne_defauts = liste_dateDefauts.split('\n'); // Nombre de ligne
+	var temp_date_defauts = new Array(), laDate_defauts;
+	var temp_true_defauts = false, temp_string_defauts="";
+	for(var i = 0; i < nb_ligne_defauts.length;i++){
+		laDate_defauts = nb_ligne_defauts[i].substr(1,10);
+		temp_true_defauts = true;
+		for(var j = 0; j < temp_date_defauts.length; j++){
+			if(laDate_defauts==temp_date_defauts[j]) temp_true_defauts = false;
+		}
+		if(temp_true_defauts){
+			if( laDate_defauts.length != 0){
+				temp_date_defauts.push(laDate_defauts);
+				temp_string_defauts+="<option value="+laDate_defauts+">"+laDate_defauts+"</option>";
+			}
+		}
+	}
+	var id_select_defauts = document.getElementById('id_select_defauts');
+	id_select_defauts.innerHTML = "<select id='select_defauts' onChange='evenementChange(\"id_select_defauts\");' style='padding:5px; height: 30px;font-size: 16px;'><option value='none'>Choisir une date</option><optgroup label='Date trouvée'>"+temp_string_defauts+"</optgroup></select>";
+/* TRAITEMENT DU SELECT DEFAUTS */ 
+
+/* TRAITEMENT DU SELECT MESURES */ 
+	var liste_dateMesures = lectureFichier("fiche_conso");
+	nb_ligne_mesures = liste_dateMesures.split('\n'); // Nombre de ligne
+	
+	var temp_date_mesures = new Array(), laDate_mesures;
+	var temp_true_mesures = false, temp_string_mesures="";
+	
+	for(var i = 0; i < nb_ligne_mesures.length;i++){
+		laDate_mesures = nb_ligne_mesures[i].substr(1,10);
+		temp_true_mesures = true;
+		for(var j = 0; j < temp_date_mesures.length; j++){
+			if(laDate_mesures==temp_date_mesures[j]) temp_true_mesures = false;
+		}
+		if(temp_true_mesures){
+			temp_date_mesures.push(laDate_mesures);
+			temp_string_mesures+="<option value="+laDate_mesures+">"+laDate_mesures+"</option>";
+		}
+	}
+
+	var id_select_consommation = document.getElementById('id_select_consommation');
+	id_select_consommation.innerHTML = "<select id='select_conso' onChange='evenementChange(\"id_select_consommation\");' style='padding:5px; height: 30px;font-size: 16px;'><option value='none'>Choisir une date</option><optgroup label='Date trouvée'>"+temp_string_mesures+"</optgroup></select>";
+/* TRAITEMENT DU SELECT MESURES */ 		
+})()
+			
+</script>
+		<script type="text/javascript">
+			function envoyerTrame(argument)
+			{
+				var client = new XMLHttpRequest();
+				client.open("GET", "/?envoiValeur="+argument, false);
+				client.send(null);
+					
+				document.location.href="Rue.html";
+				return false;
+			}
+
+			function evenementChange(idBalise){
+				switch(idBalise){
+					case 'id_select_defauts':
+						var id_affiche_defauts = document.getElementById('id_affiche_defauts');
+						var select_defauts = document.getElementById('select_defauts');
+						var tab_defauts = lectureFichier('fiche_defauts');
+						var tab_data_defauts = new Array();
+						var cursor1 = 0, cursor2 = 0, totalCaract = 0;
+
+						var nb_boucle_test = tab_defauts.split('\n');
+						// Traitement et découpage du TXT en tableau
+						for(var i=0; i<nb_boucle_test.length*3; i++){
+							cursor1 = tab_defauts.indexOf(";", cursor2); 
+							cursor2 = tab_defauts.indexOf(";", cursor1+1);
+							totalCaract = cursor2 - cursor1; 
+							tab_data_defauts.push(tab_defauts.substr(cursor1+1, totalCaract-1));
+						}
+
+						id_affiche_defauts.innerHTML = "";
+						if(select_defauts.value == "none"){
+							id_affiche_defauts.style.marginTop = "0px";
+							id_affiche_defauts.style.padding = "0px";
+							id_affiche_defauts.style.paddingBottom = "0px";
+							id_affiche_defauts.style.borderTop = "0px solid #2980b9";
+							id_affiche_defauts.style.borderBottom = "0px solid #2980b9";
+						}else {
+							// Traitement et découpage du TXT en tableau
+							// Affichage dans la balise concernée
+							alert(tab_data_defauts);
+							for(var i=0; i<tab_data_defauts.length;i++){
+								if(tab_data_defauts[i]==select_defauts.value){
+									if(tab_data_defauts[i+2]){
+										id_affiche_defauts.innerHTML += "Date du défaut : " + tab_data_defauts[i]+ "<br>"; 
+										id_affiche_defauts.innerHTML += "Heure du défaut : " + tab_data_defauts[i+1]+ "<br>"; 
+										id_affiche_defauts.innerHTML += "Nom ou type : " + tab_data_defauts[i+2]+ "<br>";
+										id_affiche_defauts.innerHTML += "<br>"; 
+									}
+								}
+							}
+							id_affiche_defauts.style.marginTop = "10px";
+							id_affiche_defauts.style.padding = "15px";
+							id_affiche_defauts.style.paddingBottom = "0px";
+							id_affiche_defauts.style.borderTop = "1px solid #2980b9";
+							id_affiche_defauts.style.borderBottom = "1px solid #2980b9";
+							// Affichage dans la balise concernée
+						}
+					break;
+					case 'id_select_consommation':
+						var id_affiche_consommation = document.getElementById('id_affiche_consommation');
+						var select_conso = document.getElementById('select_conso');
+						var tab_conso = lectureFichier('fiche_conso');
+						var tab_data_conso = new Array();
+						var cursor1 = 0, cursor2 = 0, totalCaract = 0;
+
+						var nb_boucle_test = tab_conso.split('\n');
+						// Traitement et découpage du TXT en tableau
+						for(var i=0; i<nb_boucle_test.length*6; i++){
+							cursor1 = tab_conso.indexOf(";", cursor2); 
+							cursor2 = tab_conso.indexOf(";", cursor1+1);
+							totalCaract = cursor2 - cursor1; 
+							tab_data_conso.push(tab_conso.substr(cursor1+1, totalCaract-1));
+						}
+
+						id_affiche_consommation.innerHTML = "";
+						if(select_conso.value == "none"){
+							id_affiche_consommation.style.marginTop = "0px";
+							id_affiche_consommation.style.padding = "0px";
+							id_affiche_consommation.style.paddingBottom = "0px";
+							id_affiche_consommation.style.borderTop = "0px solid #2980b9";
+							id_affiche_consommation.style.borderBottom = "0px solid #2980b9";
+						}else {
+							// Traitement et découpage du TXT en tableau
+							// Affichage dans la balise concernée
+							for(var i=0; i<tab_data_conso.length;i++){
+								if(tab_data_conso[i]==select_conso.value){
+									id_affiche_consommation.innerHTML += "Date de la mesure : " + tab_data_conso[i]+ "<br>"; 
+									id_affiche_consommation.innerHTML += "Heure de la mesure : " + tab_data_conso[i+1]+ "<br>"; 
+									id_affiche_consommation.innerHTML += "Type de mesure : " + tab_data_conso[i+2]+ "<br>"; 
+									id_affiche_consommation.innerHTML += "Valeur mesurée : " + tab_data_conso[i+3]+ "<br>"; 
+									id_affiche_consommation.innerHTML += "Trame : " + tab_data_conso[i+4]+ "<br>"; 
+									id_affiche_consommation.innerHTML += "<br>"; 
+								}
+							}
+							id_affiche_consommation.style.marginTop = "10px";
+							id_affiche_consommation.style.padding = "15px";
+							id_affiche_consommation.style.paddingBottom = "0px";
+							id_affiche_consommation.style.borderTop = "1px solid #2980b9";
+							id_affiche_consommation.style.borderBottom = "1px solid #2980b9";
+							// Affichage dans la balise concernée
+						}
+						break;
+					case 'id_select_interventions':
+						var id_affiche_interventions = document.getElementById('id_affiche_interventions');
+						var select_interventions = document.getElementById('select_interventions');
+						var dateRecherchee = select_interventions.value;
+						id_affiche_interventions.innerHTML="";
+						for(var i=0;i<new_tab_interventions.length;i++){
+							if(dateRecherchee == new_tab_interventions[i].substr(13,10)){
+								for(var j=0;j<new_tab_interventions[i].length;j++){
+									if(new_tab_interventions[i][j]=="."){
+										id_affiche_interventions.innerHTML += new_tab_interventions[i][j]+"<br>";
+									} else {
+										id_affiche_interventions.innerHTML += new_tab_interventions[i][j];
+									}
+								}
+								id_affiche_interventions.innerHTML += "<br><br>";
+							}
+						}
+						if(dateRecherchee=="none"){
+							id_affiche_interventions.style.marginTop = "0px";
+							id_affiche_interventions.style.padding = "0px";
+							id_affiche_interventions.style.paddingBottom = "0px";
+							id_affiche_interventions.style.borderTop = "0px solid #2980b9";
+							id_affiche_interventions.style.borderBottom = "0px solid #2980b9";
+						} else {
+							id_affiche_interventions.style.marginTop = "10px";
+							id_affiche_interventions.style.padding = "15px";
+							id_affiche_interventions.style.paddingBottom = "15px";
+							id_affiche_interventions.style.borderTop = "1px solid #2980b9";
+							id_affiche_interventions.style.borderBottom = "1px solid #2980b9";
+						}
+						break;
+					default:
+						alert('Defaut constaté : Switch evenementChange');
+					break;
+				}
+			}
+		</script>
+	</body>
+</html>

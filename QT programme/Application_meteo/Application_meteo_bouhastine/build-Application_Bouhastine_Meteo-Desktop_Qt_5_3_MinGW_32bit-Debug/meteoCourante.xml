@@ -1,0 +1,567 @@
+
+<response>
+	<version>0.1</version>
+	<termsofService>http://www.wunderground.com/weather/api/d/terms.html</termsofService>
+	<features>
+		<feature>conditions</feature>
+		<feature>forecast</feature>
+	</features>
+  <current_observation>
+		<image>
+		<url>http://icons.wxug.com/graphics/wu2/logo_130x80.png</url>
+		<title>Weather Underground</title>
+		<link>http://www.wunderground.com</link>
+		</image>
+		<display_location>
+		<full>Toulouse, France</full>
+		<city>Toulouse</city>
+		<state>31</state>
+		<state_name>France</state_name>
+		<country>FR</country>
+		<country_iso3166>FR</country_iso3166>
+		<zip>00000</zip>
+		<magic>2</magic>
+		<wmo>07630</wmo>
+		<latitude>43.63000107</latitude>
+		<longitude>1.37000000</longitude>
+		<elevation>153.9</elevation>
+		</display_location>
+		<observation_location>
+		<full>Toulouse, </full>
+		<city>Toulouse</city>
+		<state></state>
+		<country>FR</country>
+		<country_iso3166>FR</country_iso3166>
+		<latitude>43.62111282</latitude>
+		<longitude>1.37888896</longitude>
+		<elevation>499 ft</elevation>
+		</observation_location>
+		<estimated>
+		</estimated>
+		<station_id>LFBO</station_id>
+		<observation_time>Last Updated on novembre 10, 11:00 CET</observation_time>
+		<observation_time_rfc822>Thu, 10 Nov 2016 11:00:00 +0100</observation_time_rfc822>
+		<observation_epoch>1478772000</observation_epoch>
+		<local_time_rfc822>Thu, 10 Nov 2016 11:33:22 +0100</local_time_rfc822>
+		<local_epoch>1478774002</local_epoch>
+		<local_tz_short>CET</local_tz_short>
+		<local_tz_long>Europe/Paris</local_tz_long>
+		<local_tz_offset>+0100</local_tz_offset>
+		<weather>Couvert</weather>
+		<temperature_string>52 F (11 C)</temperature_string>
+		<temp_f>52</temp_f>
+		<temp_c>11</temp_c>
+		<relative_humidity>88%</relative_humidity>
+		<wind_string>From the West at 18 MPH</wind_string>
+		<wind_dir>West</wind_dir>
+		<wind_degrees>260</wind_degrees>
+		<wind_mph>18</wind_mph>
+		<wind_gust_mph>0</wind_gust_mph>
+		<wind_kph>30</wind_kph>
+		<wind_gust_kph>0</wind_gust_kph>
+		<pressure_mb>1020</pressure_mb>
+		<pressure_in>30.12</pressure_in>
+		<pressure_trend>0</pressure_trend>
+		
+		<dewpoint_string>48 F (9 C)</dewpoint_string>
+		<dewpoint_f>48</dewpoint_f>
+		<dewpoint_c>9</dewpoint_c>
+		
+		
+		<heat_index_string>NA</heat_index_string>
+		<heat_index_f>NA</heat_index_f>
+		<heat_index_c>NA</heat_index_c>
+		
+		
+		<windchill_string>NA</windchill_string>
+		<windchill_f>NA</windchill_f>
+		<windchill_c>NA</windchill_c>
+		
+        <feelslike_string>52 F (11 C)</feelslike_string>
+        <feelslike_f>52</feelslike_f>
+        <feelslike_c>11</feelslike_c>
+		<visibility_mi>6.2</visibility_mi>
+		<visibility_km>10.0</visibility_km>
+		<solarradiation></solarradiation>
+		<UV>1</UV>
+		<precip_1hr_string>-9999.00 in (-9999.00 mm)</precip_1hr_string>
+		<precip_1hr_in>-9999.00</precip_1hr_in>
+		<precip_1hr_metric>-9999.00</precip_1hr_metric>
+		<precip_today_string>0.00 in (0.0 mm)</precip_today_string>
+		<precip_today_in>0.00</precip_today_in>
+		<precip_today_metric>0.0</precip_today_metric>
+		
+		
+		
+		<icon>cloudy</icon>
+		<icon_url>http://icons.wxug.com/i/c/k/cloudy.gif</icon_url>
+		<forecast_url>http://www.wunderground.com/global/stations/07630.html</forecast_url>
+        
+		<history_url>http://www.wunderground.com/history/airport/LFBO/2016/11/10/DailyHistory.html</history_url>
+		
+		<ob_url>http://www.wunderground.com/cgi-bin/findweather/getForecast?query=43.62111282,1.37888896</ob_url>
+	</current_observation>
+
+		
+	
+	
+	
+	
+    
+	
+		
+
+
+
+
+
+
+
+
+	<forecast>
+		<txt_forecast>
+			<date>09:55 CET</date>
+			<forecastdays>
+				
+				
+
+			
+				<forecastday>
+					<period>0</period>
+					<icon>chancerain</icon>
+					<icon_url>http://icons.wxug.com/i/c/k/chancerain.gif</icon_url>
+					
+					<title>jeudi</title>
+					<fcttext><![CDATA[Légère pluie au cours de l'après-midi. Maximales : 55 ºF. Vents O soufflant de 15 à 25 mi/h. Risque de pluie : 70 %.]]></fcttext>
+					<fcttext_metric><![CDATA[Légère pluie. Maximales : 12 ºC. Vents O soufflant de 25 à 40 km/h. Risque de pluie : 80 %.]]></fcttext_metric>
+					<pop>70</pop>
+				</forecastday>
+
+				
+				<forecastday>
+					<period>1</period>
+					<icon>nt_chancerain</icon>
+					<icon_url>http://icons.wxug.com/i/c/k/nt_chancerain.gif</icon_url>
+					
+					<title>jeudi soir</title>
+					<fcttext><![CDATA[Légère pluie. Minimales : 51 ºF. Vents O soufflant de 15 à 25 mi/h. Risque de pluie : 80 %.]]></fcttext>
+					<fcttext_metric><![CDATA[Légère pluie. Minimales : 11 ºC. Vents O soufflant de 25 à 40 km/h. Risque de pluie : 80 %.]]></fcttext_metric>
+					<pop>80</pop>
+				</forecastday>
+				
+			
+				<forecastday>
+					<period>2</period>
+					<icon>rain</icon>
+					<icon_url>http://icons.wxug.com/i/c/k/rain.gif</icon_url>
+					
+					<title>vendredi</title>
+					<fcttext><![CDATA[Nuageux avec pluie dans la matinée. Maximales : 55 ºF. Vents ONO soufflant de 10 à 20 mi/h. Risque de pluie : 60 %.]]></fcttext>
+					<fcttext_metric><![CDATA[Nuageux avec pluie dans la matinée. Maximales : 13 ºC. Vents ONO soufflant de 15 à 30 km/h. Risque de pluie : 60 %.]]></fcttext_metric>
+					<pop>60</pop>
+				</forecastday>
+
+				
+				<forecastday>
+					<period>3</period>
+					<icon>nt_mostlycloudy</icon>
+					<icon_url>http://icons.wxug.com/i/c/k/nt_mostlycloudy.gif</icon_url>
+					
+					<title>vendredi soir</title>
+					<fcttext><![CDATA[Très nuageux. Minimales : 45 ºF. Vents ONO et variables.]]></fcttext>
+					<fcttext_metric><![CDATA[Très nuageux. Minimales : 7 ºC. Vents ONO et variables.]]></fcttext_metric>
+					<pop>10</pop>
+				</forecastday>
+				
+			
+				<forecastday>
+					<period>4</period>
+					<icon>cloudy</icon>
+					<icon_url>http://icons.wxug.com/i/c/k/cloudy.gif</icon_url>
+					
+					<title>samedi</title>
+					<fcttext><![CDATA[Nuageux. Maximales : 57 ºF. Vents SSO et variables.]]></fcttext>
+					<fcttext_metric><![CDATA[Nuageux. Maximales : 14 ºC. Vents SSO et variables.]]></fcttext_metric>
+					<pop>20</pop>
+				</forecastday>
+
+				
+				<forecastday>
+					<period>5</period>
+					<icon>nt_chancerain</icon>
+					<icon_url>http://icons.wxug.com/i/c/k/nt_chancerain.gif</icon_url>
+					
+					<title>samedi soir</title>
+					<fcttext><![CDATA[Légère pluie. Minimales : 51 ºF. Vents OSO soufflant de 10 à 15 mi/h. Risque de pluie : 80 %.]]></fcttext>
+					<fcttext_metric><![CDATA[Légère pluie. Minimales : 10 ºC. Vents OSO soufflant de 15 à 25 km/h. Risque de pluie : 80 %.]]></fcttext_metric>
+					<pop>80</pop>
+				</forecastday>
+				
+			
+				<forecastday>
+					<period>6</period>
+					<icon>rain</icon>
+					<icon_url>http://icons.wxug.com/i/c/k/rain.gif</icon_url>
+					
+					<title>dimanche</title>
+					<fcttext><![CDATA[Pluie. Maximales : 53 ºF. Vents ONO soufflant de 10 à 15 mi/h. Risque de pluie : 80 %.]]></fcttext>
+					<fcttext_metric><![CDATA[Pluie. Maximales : 12 ºC. Vents ONO soufflant de 15 à 25 km/h. Risque de pluie : 80 %.]]></fcttext_metric>
+					<pop>80</pop>
+				</forecastday>
+
+				
+				<forecastday>
+					<period>7</period>
+					<icon>nt_chancerain</icon>
+					<icon_url>http://icons.wxug.com/i/c/k/nt_chancerain.gif</icon_url>
+					
+					<title>dimanche soir</title>
+					<fcttext><![CDATA[Averses. Minimales : 44 ºF. Vents ONO soufflant de 5 à 10 mi/h. Risque de pluie : 40 %.]]></fcttext>
+					<fcttext_metric><![CDATA[Averses. Minimales : 7 ºC. Vents ONO soufflant de 10 à 15 km/h. Risque de pluie : 40 %.]]></fcttext_metric>
+					<pop>40</pop>
+				</forecastday>
+				
+			
+			</forecastdays>
+		</txt_forecast>
+
+		<simpleforecast>
+			<forecastdays>
+				
+				<forecastday>
+					<date>
+  <epoch>1478800800</epoch>
+  <pretty_short>19:00 CET</pretty_short>
+  <pretty>19:00 CET le 10 novembre 2016</pretty>
+  <day>10</day>
+  <month>11</month>
+  <year>2016</year>
+  <yday>314</yday>
+  <hour>19</hour>
+  <min>00</min>
+  <sec>0</sec>
+  <isdst>0</isdst>
+  <monthname>novembre</monthname>
+  <monthname_short>Nov</monthname_short>
+  <weekday_short>jeu</weekday_short>
+  <weekday>jeudi</weekday>
+  <ampm>PM</ampm>
+  <tz_short>CET</tz_short>
+  <tz_long>Europe/Paris</tz_long>
+</date>
+					<period>1</period>
+					<high>
+						<fahrenheit>55</fahrenheit>
+						<celsius>13</celsius>
+					</high>
+					<low>
+						<fahrenheit>51</fahrenheit>
+						<celsius>11</celsius>
+					</low>
+					<conditions>Risque de pluie</conditions>
+					
+					<icon>chancerain</icon>
+					<icon_url>http://icons.wxug.com/i/c/k/chancerain.gif</icon_url>
+					<skyicon></skyicon>
+					<pop>70</pop>
+					<qpf_allday>
+						<in>0.35</in>
+						<mm>9</mm>
+					</qpf_allday>
+					<qpf_day>
+						<in>0.14</in>
+						<mm>4</mm>
+					</qpf_day>
+					<qpf_night>
+						<in>0.21</in>
+						<mm>5</mm>
+					</qpf_night>
+					<snow_allday>
+						<in>0.0</in>
+						<cm>0.0</cm>
+					</snow_allday>
+					<snow_day>
+						<in>0.0</in>
+						<cm>0.0</cm>
+					</snow_day>
+					<snow_night>
+						<in>0.0</in>
+						<cm>0.0</cm>
+					</snow_night>
+					<maxwind>
+						<mph>25</mph>
+						<kph>40</kph>
+						<dir>O</dir>
+						<degrees>265</degrees>
+					</maxwind>
+					<avewind>
+						<mph>18</mph>
+						<kph>29</kph>
+						<dir>O</dir>
+						<degrees>265</degrees>
+					</avewind>
+					<avehumidity>85</avehumidity>
+					<maxhumidity>0</maxhumidity>
+					<minhumidity>0</minhumidity>
+				</forecastday>
+				
+				<forecastday>
+					<date>
+  <epoch>1478887200</epoch>
+  <pretty_short>19:00 CET</pretty_short>
+  <pretty>19:00 CET le 11 novembre 2016</pretty>
+  <day>11</day>
+  <month>11</month>
+  <year>2016</year>
+  <yday>315</yday>
+  <hour>19</hour>
+  <min>00</min>
+  <sec>0</sec>
+  <isdst>0</isdst>
+  <monthname>novembre</monthname>
+  <monthname_short>Nov</monthname_short>
+  <weekday_short>vend</weekday_short>
+  <weekday>vendredi</weekday>
+  <ampm>PM</ampm>
+  <tz_short>CET</tz_short>
+  <tz_long>Europe/Paris</tz_long>
+</date>
+					<period>2</period>
+					<high>
+						<fahrenheit>55</fahrenheit>
+						<celsius>13</celsius>
+					</high>
+					<low>
+						<fahrenheit>45</fahrenheit>
+						<celsius>7</celsius>
+					</low>
+					<conditions>Pluie</conditions>
+					
+					<icon>rain</icon>
+					<icon_url>http://icons.wxug.com/i/c/k/rain.gif</icon_url>
+					<skyicon></skyicon>
+					<pop>60</pop>
+					<qpf_allday>
+						<in>0.08</in>
+						<mm>2</mm>
+					</qpf_allday>
+					<qpf_day>
+						<in>0.08</in>
+						<mm>2</mm>
+					</qpf_day>
+					<qpf_night>
+						<in>0.00</in>
+						<mm>0</mm>
+					</qpf_night>
+					<snow_allday>
+						<in>0.0</in>
+						<cm>0.0</cm>
+					</snow_allday>
+					<snow_day>
+						<in>0.0</in>
+						<cm>0.0</cm>
+					</snow_day>
+					<snow_night>
+						<in>0.0</in>
+						<cm>0.0</cm>
+					</snow_night>
+					<maxwind>
+						<mph>20</mph>
+						<kph>32</kph>
+						<dir>ONO</dir>
+						<degrees>297</degrees>
+					</maxwind>
+					<avewind>
+						<mph>13</mph>
+						<kph>21</kph>
+						<dir>ONO</dir>
+						<degrees>297</degrees>
+					</avewind>
+					<avehumidity>86</avehumidity>
+					<maxhumidity>0</maxhumidity>
+					<minhumidity>0</minhumidity>
+				</forecastday>
+				
+				<forecastday>
+					<date>
+  <epoch>1478973600</epoch>
+  <pretty_short>19:00 CET</pretty_short>
+  <pretty>19:00 CET le 12 novembre 2016</pretty>
+  <day>12</day>
+  <month>11</month>
+  <year>2016</year>
+  <yday>316</yday>
+  <hour>19</hour>
+  <min>00</min>
+  <sec>0</sec>
+  <isdst>0</isdst>
+  <monthname>novembre</monthname>
+  <monthname_short>Nov</monthname_short>
+  <weekday_short>sam</weekday_short>
+  <weekday>samedi</weekday>
+  <ampm>PM</ampm>
+  <tz_short>CET</tz_short>
+  <tz_long>Europe/Paris</tz_long>
+</date>
+					<period>3</period>
+					<high>
+						<fahrenheit>57</fahrenheit>
+						<celsius>14</celsius>
+					</high>
+					<low>
+						<fahrenheit>51</fahrenheit>
+						<celsius>11</celsius>
+					</low>
+					<conditions>Couvert</conditions>
+					
+					<icon>cloudy</icon>
+					<icon_url>http://icons.wxug.com/i/c/k/cloudy.gif</icon_url>
+					<skyicon></skyicon>
+					<pop>20</pop>
+					<qpf_allday>
+						<in>0.20</in>
+						<mm>5</mm>
+					</qpf_allday>
+					<qpf_day>
+						<in>0.00</in>
+						<mm>0</mm>
+					</qpf_day>
+					<qpf_night>
+						<in>0.20</in>
+						<mm>5</mm>
+					</qpf_night>
+					<snow_allday>
+						<in>0.0</in>
+						<cm>0.0</cm>
+					</snow_allday>
+					<snow_day>
+						<in>0.0</in>
+						<cm>0.0</cm>
+					</snow_day>
+					<snow_night>
+						<in>0.0</in>
+						<cm>0.0</cm>
+					</snow_night>
+					<maxwind>
+						<mph>5</mph>
+						<kph>8</kph>
+						<dir>SSO</dir>
+						<degrees>207</degrees>
+					</maxwind>
+					<avewind>
+						<mph>4</mph>
+						<kph>6</kph>
+						<dir>SSO</dir>
+						<degrees>207</degrees>
+					</avewind>
+					<avehumidity>83</avehumidity>
+					<maxhumidity>0</maxhumidity>
+					<minhumidity>0</minhumidity>
+				</forecastday>
+				
+				<forecastday>
+					<date>
+  <epoch>1479060000</epoch>
+  <pretty_short>19:00 CET</pretty_short>
+  <pretty>19:00 CET le 13 novembre 2016</pretty>
+  <day>13</day>
+  <month>11</month>
+  <year>2016</year>
+  <yday>317</yday>
+  <hour>19</hour>
+  <min>00</min>
+  <sec>0</sec>
+  <isdst>0</isdst>
+  <monthname>novembre</monthname>
+  <monthname_short>Nov</monthname_short>
+  <weekday_short>dim</weekday_short>
+  <weekday>dimanche</weekday>
+  <ampm>PM</ampm>
+  <tz_short>CET</tz_short>
+  <tz_long>Europe/Paris</tz_long>
+</date>
+					<period>4</period>
+					<high>
+						<fahrenheit>53</fahrenheit>
+						<celsius>12</celsius>
+					</high>
+					<low>
+						<fahrenheit>44</fahrenheit>
+						<celsius>7</celsius>
+					</low>
+					<conditions>Pluie</conditions>
+					
+					<icon>rain</icon>
+					<icon_url>http://icons.wxug.com/i/c/k/rain.gif</icon_url>
+					<skyicon></skyicon>
+					<pop>80</pop>
+					<qpf_allday>
+						<in>0.20</in>
+						<mm>5</mm>
+					</qpf_allday>
+					<qpf_day>
+						<in>0.16</in>
+						<mm>4</mm>
+					</qpf_day>
+					<qpf_night>
+						<in>0.04</in>
+						<mm>1</mm>
+					</qpf_night>
+					<snow_allday>
+						<in>0.0</in>
+						<cm>0.0</cm>
+					</snow_allday>
+					<snow_day>
+						<in>0.0</in>
+						<cm>0.0</cm>
+					</snow_day>
+					<snow_night>
+						<in>0.0</in>
+						<cm>0.0</cm>
+					</snow_night>
+					<maxwind>
+						<mph>15</mph>
+						<kph>24</kph>
+						<dir>ONO</dir>
+						<degrees>288</degrees>
+					</maxwind>
+					<avewind>
+						<mph>11</mph>
+						<kph>18</kph>
+						<dir>ONO</dir>
+						<degrees>288</degrees>
+					</avewind>
+					<avehumidity>91</avehumidity>
+					<maxhumidity>0</maxhumidity>
+					<minhumidity>0</minhumidity>
+				</forecastday>
+				
+			</forecastdays>
+		</simpleforecast>
+	</forecast>
+
+	
+	
+		
+	
+
+    
+    
+    
+	
+  
+	
+	
+	
+	
+	
+    
+    
+
+
+    
+    
+    
+    
+</response>
+	

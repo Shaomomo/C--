@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2016/10/04 09:35:04.000.856,=C:\Users\mbouhastine\Desktop\Iervese\SNImage.cpp</Transaction>
+    <Transaction>2016/10/04 09:35:04.000.850,=C:\Users\mbouhastine\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
+    <Transaction>2016/10/04 09:35:23.000.024,=C:\Users\mbouhastine\Desktop\Iervese\File1.cpp</Transaction>
+    <Transaction>2016/10/04 09:40:07.000.343,=C:\Users\mbouhastine\Documents\Embarcadero\Studio\Projets\File2.h</Transaction>
+    <Transaction>2016/10/04 09:41:28.000.318,=C:\Users\mbouhastine\Documents\Embarcadero\Studio\Projets\File2.h</Transaction>
+    <Transaction>2016/10/04 09:43:19.000.561,=C:\Users\mbouhastine\Documents\Embarcadero\Studio\Projets\File2.h</Transaction>
+    <Transaction>2016/10/04 09:43:49.000.973,C:\Users\mbouhastine\Documents\Embarcadero\Studio\Projets\File2.h=C:\Users\mbouhastine\Desktop\Iervese\Cible.h</Transaction>
+    <Transaction>2016/10/04 09:44:32.000.146,=C:\Users\mbouhastine\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2016/10/04 09:44:37.000.292,C:\Users\mbouhastine\Desktop\Iervese\Cible.h=</Transaction>
+    <Transaction>2016/10/04 09:44:59.000.458,C:\Users\mbouhastine\Documents\Embarcadero\Studio\Projets\Unit1.cpp=C:\Users\mbouhastine\Documents\Embarcadero\Studio\Projets\Cible.cpp</Transaction>
+    <Transaction>2016/10/04 09:44:59.000.458,C:\Users\mbouhastine\Documents\Embarcadero\Studio\Projets\Unit1.h=C:\Users\mbouhastine\Documents\Embarcadero\Studio\Projets\Cible.h</Transaction>
+    <Transaction>2016/10/04 11:43:10.000.238,C:\Users\mbouhastine\Documents\Embarcadero\Studio\Projets\Cible.cpp=C:\Users\mbouhastine\Desktop\Iervese\Cible.cpp</Transaction>
+    <Transaction>2016/10/04 11:43:10.000.238,C:\Users\mbouhastine\Documents\Embarcadero\Studio\Projets\Cible.h=C:\Users\mbouhastine\Desktop\Iervese\Cible.h</Transaction>
+    <Transaction>2016/10/04 11:43:12.000.257,C:\Users\mbouhastine\Documents\Embarcadero\Studio\Projets\Project1.cbproj=C:\Users\mbouhastine\Desktop\Iervese\Project1.cbproj</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="SNImage.cpp"/>
+    <File Path="SNImage.cpp"/>
+    <File Path="SNImage.h"/>
+    <File Path="File1.cpp"/>
+    <File Path="Cible.cpp"/>
+    <File Path="Cible.cpp"/>
+    <File Path="Cible.h"/>
+  </ProjectSortOrder>
+</BorlandProject>

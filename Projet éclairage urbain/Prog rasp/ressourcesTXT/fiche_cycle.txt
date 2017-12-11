@@ -1,0 +1,10 @@
+varDate;31/01/2017;
+varCoucherSoleil;19h30'15;
+varPrechauffage;19h10'00;
+varNominale1;19h50'00;
+varEco1;22h30'00;
+varEco2;01h00'00;
+varEco3;05h30'00;
+varNominale2;06h00'00;
+varExtinction;07h40'47;
+varLeverSoleil;07h30'47;

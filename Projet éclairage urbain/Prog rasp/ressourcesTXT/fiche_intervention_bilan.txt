@@ -1,0 +1,13 @@
+﻿Bilan : 
+Le : 31/01/2017.
+Realisé par le technicien suivant : Leo-paul. 
+Cette intervention a eu lieu sur la Rue 1 concernant le lampadaire numero : 4. 
+Action effectué : Relamping. 
+Conclusion : Satisfaisant
+
+Bilan : 
+Le : 31/01/2017.
+Realisé par le technicien suivant : Leo-paul. 
+Cette intervention a eu lieu sur la Rue 4 concernant le lampadaire numero : 5. 
+Action effectué : Configuration_Cycle. 
+Conclusion : Insatisfaisant
